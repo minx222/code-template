@@ -1,1 +1,7 @@
-## 代码开发模版，请查看对应分支
+## React
+```sh
+pnpm i
+```
+```sh
+pnpm start
+```

@@ -6,8 +6,8 @@
     "@ant-design/pro-components": "^2.6.42",
     "@craco/craco": "^7.0.0",
     "@reduxjs/toolkit": "^1.9.2",
-		"ahooks": "^3.7.8",
-		"antd": "^5.10.1",
+    "ahooks": "^3.7.8",
+    "antd": "^5.10.1",
     "axios": "^1.2.6",
     "qs": "^6.11.0",
     "react": "^18.2.0",
@@ -69,6 +69,7 @@
     "pnpm": "^8.7.5",
     "postcss": "^8.4.4",
     "prettier": "^3.0.3",
+    "styled-components": "^6.1.6",
     "tailwindcss": "npm:@tailwindcss/postcss7-compat@^2.2.17",
     "webpackbar": "^5.0.2"
   }

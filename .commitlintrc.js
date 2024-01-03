@@ -1,6 +1,6 @@
 /**
  * init: 初始化
- * add：新功能
+ * feat：新功能
  * update：更新某功能
  * fix：修补某功能的bug
  * refactor：重构某个功能
@@ -17,8 +17,8 @@ module.exports = {
       2,
       'always',
       [
+				'init',
         'feat',
-        'add',
         'update',
         'fix',
         'refactor',

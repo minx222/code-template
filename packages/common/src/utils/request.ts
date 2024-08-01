@@ -1,13 +1,11 @@
-import { message } from 'antd';
 import axios from 'axios';
 import type { InternalAxiosRequestConfig, AxiosInstance, AxiosResponse, AxiosError } from 'axios';
 import qs from 'qs';
 
-import type { CreateAxiosOptions } from '@/config/reques';
-import { config } from '@/config/reques';
+import type { CreateAxiosOptions } from '@/types';
 import { ResultEnum, RequestMethodEnum } from '@/enums/request';
 
-import type { ResultData } from '@/types';
+import type { ResultData } from '../types';
 
 export class AxiosService {
 	private axiosInstance: AxiosInstance;
@@ -16,14 +14,14 @@ export class AxiosService {
 	constructor(options: CreateAxiosOptions) {
 		this.options = options;
 		this.axiosInstance = axios.create(options);
-		this.setupInterceptors(options);
+		this.setupInterceptors();
 	}
 
-	private setupInterceptors(options: CreateAxiosOptions) {
+	private setupInterceptors() {
 		this.axiosInstance.interceptors.request.use(
 			(config: InternalAxiosRequestConfig) => {
 				if (!config.method) {
-					config.method = options.default_method;
+					config.method = this.options.default_method;
 				}
 				return config;
 			},
@@ -34,11 +32,11 @@ export class AxiosService {
 		this.axiosInstance.interceptors.response.use((response: AxiosResponse) => {
 			const { data, status } = response;
 			if (status !== ResultEnum.SUCCESS) {
-				message.error('请求失败！ 失败信息：', data);
+				console.error(data)
 				Promise.reject(data);
 			}
 			if (data.code !== ResultEnum.SUCCESS) {
-				message.error('请求失败！ 失败信息：', data.message);
+				console.error(data.message)
 				return Promise.reject(data);
 			}
 			return data;
@@ -59,5 +57,3 @@ export class AxiosService {
 		});
 	}
 }
-
-export default new AxiosService(config);

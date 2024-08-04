@@ -14,6 +14,12 @@ export const template = {
 		url: "github:minx222/code-template",
 		branch: "react-rspack"
 	},
+	reactRspack: {
+		name: "react-vite-electron",
+		description: "react-electron应用",
+		url: "github:minx222/code-template",
+		branch: "react-vite-electron"
+	},
 }
 
 export const reduceSelect = Object.keys(template).map((item) => {

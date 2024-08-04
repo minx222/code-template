@@ -3,6 +3,7 @@ import { input, select } from "@inquirer/prompts";
 import ora from "ora";
 import chalk from "chalk";
 import logSymbols from "log-symbols";
+import rimraf from 'rimraf'
 
 import { reduceSelect, template } from "./config.js";
 import { download } from "./utils/index.js";
@@ -24,6 +25,7 @@ program
 		download(`${config.url}#${config.branch}`, appName, { clone: true })
 			.then(() => {
 				spinner.succeed(chalk.green("下载成功!!!"));
+				rimraf('.git')
 			})
 			.catch((err) => {
 				spinner.fail("下载终止，终止原因：");

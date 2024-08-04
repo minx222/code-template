@@ -2,10 +2,10 @@
   "name": "fast-monorepo-cli",
   "private": false,
   "version": "0.0.1",
-  "type":"module",
+  "type": "module",
   "author": "case.mo",
   "main": "./src/index.js",
-	"license": "ISC",
+  "license": "ISC",
   "scripts": {
     "lint": "biome lint --write",
     "build": "rimraf dist && tsc && rollup -c",
@@ -28,5 +28,8 @@
     "log-symbols": "^6.0.0",
     "ora": "^8.0.1",
     "rimraf": "^6.0.1"
+  },
+  "devDependencies": {
+    "@types/rimraf": "^4.0.5"
   }
 }

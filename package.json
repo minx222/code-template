@@ -1,39 +1,35 @@
 {
-  "name": "low-code",
-  "version": "1.0.0",
-  "description": "",
-  "main": "index.js",
-  "scripts": {
-    "test": "echo \"Error: no test specified\" && exit 1",
-    "dev": "cd packages/admin && pnpm dev",
-    "husky": "husky install",
-    "lint": "biome lint",
-    "changelog": "conventional-changelog -p angular -i CHANGELOG.md -s",
-    "commit": "git status && git add -A && git-cz && git push"
-  },
-  "keywords": [],
-  "author": "",
+  "name": "fast-monorepo-cli",
+  "private": false,
+  "version": "0.0.1",
+  "type": "module",
+  "author": "case.mo",
+  "main": "./src/index.js",
   "license": "ISC",
-  "devDependencies": {
-		"@commitlint/cli": "^18.6.0",
-		"@commitlint/config-conventional": "^18.6.0",
-    "@biomejs/biome": "^1.8.3",
-    "cz-git": "^1.9.4",
-		"commitizen": "^4.3.0",
-    "husky": "^9.1.3",
-    "lint-staged": "^15.2.7"
+  "scripts": {
+    "lint": "biome lint --write",
+    "build": "rimraf dist && tsc && rollup -c",
+    "dev": "node ./src/index.js create"
   },
-	"workspaces": [
-		"packages/*"
-	],
-	"config": {
-		"commitizen": {
-			"path": "node_modules/cz-git"
-		}
-	},
-	"husky": {
-		"hooks": {
-			"pre-commit": "lint-staged"
-		}
-	}
+  "keywords": [
+    "cli",
+    "开发模版"
+  ],
+  "bin": {
+    "magical": "./src/index.js"
+  },
+  "dependencies": {
+    "@inquirer/prompts": "^5.3.6",
+    "chalk": "^5.3.0",
+    "commander": "^12.1.0",
+    "download": "^8.0.0",
+    "git-clone": "^0.2.0",
+    "inquirer": "^10.1.6",
+    "log-symbols": "^6.0.0",
+    "ora": "^8.0.1",
+    "rimraf": "^6.0.1"
+  },
+  "devDependencies": {
+    "@types/rimraf": "^4.0.5"
+  }
 }

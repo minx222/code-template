@@ -8,6 +8,10 @@ import logSymbols from "log-symbols";
 import { reduceTemplate, templates, frameworks, reduceFramework } from "./config.js";
 import { download } from "./utils/index.js";
 
+import { version } from '../package.json'
+
+program.version(version)
+
 program
 .command("create")
 .description("基础模版")

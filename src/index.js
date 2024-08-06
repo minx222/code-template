@@ -1,3 +1,4 @@
+#! /usr/bin/env node
 import { program } from "commander";
 import path from 'node:path'
 import { input, select, confirm, checkbox } from "@inquirer/prompts";
@@ -8,9 +9,9 @@ import logSymbols from "log-symbols";
 import { reduceTemplate, templates, frameworks, reduceFramework } from "./config.js";
 import { download } from "./utils/index.js";
 
-import { version } from '../package.json'
+import packages from '../package.json' assert { type: "json" };
 
-program.version(version)
+program.version(packages.version)
 
 program
 .command("create")

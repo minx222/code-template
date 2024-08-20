@@ -2,7 +2,7 @@
 
 ## 使用
 ```
-magical create
+template create
 ```
 选择你的模版
 ![alt text](image-1.png)

@@ -43,6 +43,12 @@ export const frameworks = {
 		url: "github:minx222/code-template",
 		branch: "react-rspack"
 	},
+	'vue-vite': {
+		name: "vue-vite",
+		description: "vue3应用",
+		url: "github:minx222/code-template",
+		branch: "vue-template"
+	},
 }
 
 export const reduceFramework = Object.keys(frameworks).map((item) => {

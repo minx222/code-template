@@ -3,8 +3,6 @@ import { fileURLToPath, URL } from 'node:url'
 import { defineConfig } from 'vite'
 import vue from '@vitejs/plugin-vue'
 import vueJsx from '@vitejs/plugin-vue-jsx'
-import VueRouter from 'unplugin-vue-router/vite'
-import { VueRouterAutoImports } from 'unplugin-vue-router'
 import AutoImport from 'unplugin-auto-import/vite'
 import viteCompression from 'vite-plugin-compression'
 
@@ -12,9 +10,8 @@ export default defineConfig({
   plugins: [
     vue(),
     vueJsx(),
-		VueRouter(),
     AutoImport({
-      imports: ['vue', 'vue-router', 'pinia', VueRouterAutoImports],
+      imports: ['vue', 'vue-router', 'pinia'],
       dts: './typesImport.d.ts'
     }),
     viteCompression({

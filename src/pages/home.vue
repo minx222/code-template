@@ -1,20 +1,15 @@
+<script setup lang="ts">
+import { useCountStore } from '@/stores/modules/useCount'
 
-
+const countStort = useCountStore();
+const { count, doubleCount } = storeToRefs(countStort);
+const { increment } = countStort;
+</script>
 
 <template>
-  <div>
-		123
-		<div>
-			<RouterView />
-		</div>
+  <div class="flex flex-col gap-2 items-center justify-center w-full">
+		<div class="text-[32px] text-slate-200">{{ count }}</div>
+		<div class="text-[32px] text-slate-200">{{ doubleCount }}</div>
+		<button class="w-[128px] p-2 bg-white border-2 border-dashed border-red-500" @click="increment">+++</button>
 	</div>
 </template>
-
-<style lang="scss" scoped>
-div {
-  @apply text-center text-gray-50 pb-6 text-2xl;
-  background-image: -webkit-linear-gradient(left, #b5b2b2, #ff9800, #fdd835);
-  -webkit-background-clip: text;
-  -webkit-text-fill-color: transparent;
-}
-</style>

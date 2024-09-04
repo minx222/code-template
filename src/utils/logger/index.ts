@@ -28,6 +28,17 @@ export class Logger {
 		this.error(...args);
 		process.exit(1);
 	}
+
+	loggerErr = (err: Error | null) => {
+		if(!err) {
+			return;
+		}
+		if(String(err).includes('ExitPromptError')) {
+			this.exit('用户取消操作')
+		} else {
+			this.exit(err);
+		}
+	}
 }
 
 export const logger = new Logger();

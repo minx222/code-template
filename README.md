@@ -1,11 +1,14 @@
 # 代码模版
 
 ## 使用
+### 创建基座
 ```
 template create
 ```
-选择你的模版
-![alt text](image-1.png)
+### 创建子应用
+```
+template app
+```
 
 
 ## 命令

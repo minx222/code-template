@@ -1,20 +1,12 @@
 import { input, select, confirm } from "@inquirer/prompts";
 
-import { frameworks, reduceFramework, reduceTemplate, templates } from '@/config'
+import { reduceTemplate, templates } from '@/config'
 import { resolvePromise } from '@/utils';
 import type { Project } from '@/types';
 import { logger } from "@/utils/logger";
 
-const loggerErr = (err: Error | null) => {
-	if(!err) {
-		return;
-	}
-	if(String(err).includes('ExitPromptError')) {
-		logger.exit('用户取消操作')
-	} else {
-		logger.exit(err);
-	}
-}
+import { craeteApp } from './app'
+
 
 export const create = async () => {
 	const config: Partial<Project> = {};
@@ -26,7 +18,7 @@ export const create = async () => {
 			default: "app",
 		})
 	);
-	loggerErr(appErr);
+	logger.loggerErr(appErr);
 	config.appName = appName;
 	
 	// 默认模版
@@ -36,14 +28,14 @@ export const create = async () => {
 			choices: reduceTemplate,
 		})
 	);
-	loggerErr(templateErr);
+	logger.loggerErr(templateErr);
 	Object.assign(config, templates[template])
 
 	const [isFramework, isFrameworkErr] = await resolvePromise(confirm({
 		message: '是否选择一个额外框架',
 		default: false
 	}))
-	loggerErr(isFrameworkErr);
+	logger.loggerErr(isFrameworkErr);
 	if(!isFramework) {
 		return config;
 	}
@@ -54,23 +46,10 @@ export const create = async () => {
 			default: "packages",
 		})
 	);
-	loggerErr(projectPathErr);
+	logger.loggerErr(projectPathErr);
 
-	[appName, appErr] = await resolvePromise(
-		input({
-			message: "请输入项目名称",
-			default: "app",
-		})
-	);
-	loggerErr(appErr);
-
-	const [framework, frameworkErr] = await resolvePromise(select({
-		message: '请选择框架模版',
-		choices: reduceFramework
-	}))
-	loggerErr(frameworkErr);
-
-	config.child = Object.assign({ appName, path: projectPath }, frameworks[framework])
-
+	
+	config.child = await craeteApp();
+	config.child.path = projectPath;
 	return config;
 }

@@ -1,7 +1,14 @@
+export interface Templates {
+	name: string;
+	description: string;
+	url: string;
+	branch: string;
+}
+
 /**
  * @name 基础模版
  */
-export const templates = {
+export const templates: Record<string, Templates> = {
 	/**
 	 * @name monorepo模版
 	 */
@@ -30,7 +37,7 @@ export const reduceTemplate = Object.keys(templates).map((item) => {
 /**
  * @name 框架模版
  */
-export const frameworks = {
+export const frameworks: Record<string, Templates> = {
 	"react-vite": {
 		name: "react-vite",
 		description: "react-vite应用",

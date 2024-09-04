@@ -9,6 +9,7 @@
   "scripts": {
     "lint": "biome lint --write",
     "build": "rollup -c",
+		"tsc": "tsc",
     "dev": "bun ./src/index.ts create",
     "prod": "node ./dist/index.js create"
   },

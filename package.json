@@ -1,7 +1,7 @@
 {
   "name": "fast-monorepo-cli",
   "private": false,
-  "version": "0.0.4",
+  "version": "0.1.0",
   "author": "case.mo",
   "main": "./src/index.js",
   "type": "module",
@@ -9,7 +9,7 @@
   "scripts": {
     "lint": "biome lint --write",
     "build": "rollup -c",
-		"tsc": "tsc",
+    "tsc": "tsc",
     "dev": "bun ./src/index.ts create",
     "prod": "node ./dist/index.js create"
   },

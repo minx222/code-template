@@ -1,3 +1,8 @@
+快速搭建monorepo项目
+
+github地址
+[code-template](https://github.com/minx222/code-template)
+
 # 代码模版
 
 ## 使用

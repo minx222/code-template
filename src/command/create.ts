@@ -12,7 +12,7 @@ export const create = async () => {
 	const config: Partial<Project> = {};
 
 	// 主项目名称
-	let [appName, appErr] = await resolvePromise(
+	const [appName, appErr] = await resolvePromise(
 		input({
 			message: "请输入项目名称",
 			default: "app",

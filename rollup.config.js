@@ -11,7 +11,6 @@ export default {
   output: {
     file: 'dist/index.js', // 输出文件路径
     format: 'esm', // 输出格式为 CommonJS
-    sourcemap: true, // 生成源码映射
     exports: 'named', // 导出方式
   },
   plugins: [

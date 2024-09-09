@@ -10,7 +10,7 @@
     "lint": "biome lint --write",
     "build": "rollup -c",
     "tsc": "tsc",
-    "dev": "bun ./src/index.ts create",
+    "dev": "bun ./src/index.ts rm dist.js",
     "prod": "node ./dist/index.js create"
   },
   "keywords": [
@@ -18,7 +18,7 @@
     "开发模版"
   ],
   "bin": {
-    "template": "src/index.js"
+    "cli": "dist/index.js"
   },
   "dependencies": {
     "@inquirer/prompts": "^5.3.6",

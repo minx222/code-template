@@ -1,14 +1,14 @@
 {
 	"name": "fast-monorepo-cli",
 	"private": false,
-	"version": "1.1.0",
+	"version": "1.1.1",
 	"author": "case.mo",
 	"main": "./src/index.js",
 	"type": "module",
 	"license": "ISC",
 	"keywords": ["cli", "开发模版"],
 	"bin": {
-		"create": "dist/index.js"
+		"template": "dist/index.js"
 	},
 	"dependencies": {
 		"@inquirer/prompts": "^5.3.6",

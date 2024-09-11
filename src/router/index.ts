@@ -3,7 +3,6 @@ import { createRouter, createWebHistory } from 'vue-router'
 
 import { routes } from './routes'
 
-import { DataLoaderPlugin } from 'unplugin-vue-router/data-loaders'
 import { setupAfterEach, setupBeforeEach } from './each'
 
 export const router = createRouter({
@@ -14,6 +13,5 @@ export const router = createRouter({
 export const setupRouter = (app: App) => {
   setupAfterEach(router)
   setupBeforeEach(router)
-	app.use(DataLoaderPlugin, { router }) 
   app.use(router)
 }

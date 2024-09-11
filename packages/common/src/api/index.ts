@@ -1,5 +1,5 @@
-import { RequestMethodEnum } from "@/enums";
-import { AxiosService } from "@/utils";
+import { RequestMethodEnum } from "../enums";
+import { AxiosService } from "../utils";
 
 export const AdminReuqest = new AxiosService({
 	default_method: RequestMethodEnum.GET,

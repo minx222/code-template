@@ -14,7 +14,8 @@ node_modules
 /out/
 auto-imports.d.ts
 # production
-/build
+build
+dist-electron/*
 
 # misc
 .DS_Store

@@ -9,14 +9,17 @@
     "preview": "vite preview"
   },
   "dependencies": {
+    "@packges/common": "workspace:^",
     "@reduxjs/toolkit": "2.2.7",
-    "ahooks": "^3.8.1",
+    "@ahooksjs/use-url-state": "^3.5.1",
+    "react-use": "^17.5.1",
     "antd": "^5.10.1",
     "classnames": "^2.5.1",
     "react": "^18.3.1",
     "react-dom": "^18.3.1",
     "react-redux": "^9.1.0",
-    "react-router-dom": "6"
+    "react-router-dom": "6",
+    "redux-persist": "^6.0.0"
   },
   "devDependencies": {
     "@types/react": "^18.3.3",
@@ -26,6 +29,8 @@
     "sass-loader": "^16.0.0",
     "typescript": "^5.2.2",
     "unplugin-auto-import": "^0.18.2",
-    "vite": "^5.3.4"
+    "vite": "^5.3.4",
+    "vite-plugin-compression": "^0.5.1",
+    "vite-plugin-mock": "^3.0.2"
   }
 }

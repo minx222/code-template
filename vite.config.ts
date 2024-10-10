@@ -2,14 +2,25 @@ import path from 'node:path'
 import { defineConfig } from 'vite'
 import react from '@vitejs/plugin-react'
 import AutoImport from 'unplugin-auto-import/vite'
+import { viteMockServe } from 'vite-plugin-mock';
+import compression from 'vite-plugin-compression'
 
-// https://vitejs.dev/config/
 export default defineConfig({
   plugins: [
     react(), 
     AutoImport({
-      imports: ['react', 'react-router-dom', 'ahooks'],
-    })
+      imports: ['react', 'react-router-dom'],
+    }),
+		viteMockServe({
+			logger: true,
+			mockPath: './mocks/',
+			watchFiles: true,
+			enable: true,
+		}),
+		compression({
+			threshold: 10240,
+			deleteOriginFile: true,
+		})
   ],
   resolve: {
     alias: {
@@ -21,4 +32,39 @@ export default defineConfig({
       scss: {}
     }
   },
+	build: {
+    chunkSizeWarningLimit: 2000,
+    outDir: '../../dist/admin',
+		minify: 'terser',
+		terserOptions: {
+			compress: {
+				drop_console: true,
+				drop_debugger: true,
+			},
+		},
+		rollupOptions: {
+			output: {
+				chunkFileNames: 'assets/js/[name]-[hash].js',
+				entryFileNames: 'assets/js/[name]-[hash].js',
+				assetFileNames: 'assets/[ext]/[name]-[hash].[ext]',
+				manualChunks: {
+					'bundle-react-core': ['react', 'react-dom', 'react-router-dom'],
+					'bundle-redux-core': ['react-redux', '@reduxjs/toolkit', 'redux-persist'],
+					'bundle-antd-core': ['antd', '@ant-design/pro-components'],
+				},
+			},
+		}
+	},
+	server: {
+		host: true,
+		port: 4000,
+		open: false,
+		proxy: {
+			"/dev-api": {
+				target: "http://222.186.21.32:9015/",
+				changeOrigin: true,
+				rewrite: (path: string) => path.replace(/^\/dev-api/, ""),
+			},
+		},
+	},
 })

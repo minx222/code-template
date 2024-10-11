@@ -2,7 +2,7 @@ import { Suspense } from 'react';
 export const Home = lazy(() => import('@/pages/home'));
 export const About = lazy(() => import('@/pages/about'));
 
-export const RouterMap = {
+const RouterMap = {
 	home: <Home />,
 	about: <About />,
 };

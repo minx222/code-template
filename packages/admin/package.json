@@ -10,27 +10,27 @@
 	},
 	"dependencies": {
 		"@packges/common": "workspace:^",
-		"@reduxjs/toolkit": "2.2.7",
+		"@reduxjs/toolkit": "catalog:react18",
 		"@ahooksjs/use-url-state": "^3.5.1",
-		"react-use": "^17.5.1",
-		"antd": "^5.10.1",
+		"react-use": "catalog:react18",
+		"antd": "catalog:antd5",
 		"classnames": "^2.5.1",
-		"react": "^18.3.1",
-		"react-dom": "^18.3.1",
-		"react-redux": "^9.1.0",
-		"react-router-dom": "6",
-		"redux-persist": "^6.0.0"
+		"react": "catalog:react18",
+		"react-dom": "catalog:react18",
+		"react-redux": "catalog:react18",
+		"react-router-dom": "catalog:react18",
+		"redux-persist": "catalog:react18"
 	},
 	"devDependencies": {
 		"@types/react": "^18.3.3",
 		"@types/react-dom": "^18.3.0",
-		"@vitejs/plugin-react": "^4.3.1",
+		"@vitejs/plugin-react": "catalog:vite5",
 		"sass": "^1.77.8",
 		"sass-loader": "^16.0.0",
 		"typescript": "^5.2.2",
 		"unplugin-auto-import": "^0.18.2",
-		"vite": "^5.3.4",
-		"vite-plugin-compression": "^0.5.1",
-		"vite-plugin-mock": "^3.0.2"
+		"vite": "catalog:vite5",
+		"vite-plugin-compression": "catalog:vite5",
+		"vite-plugin-mock": "catalog:vite5"
 	}
 }

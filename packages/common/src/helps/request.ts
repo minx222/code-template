@@ -48,18 +48,18 @@ export class AxiosService {
 		});
 	}
 
-	get<T>(url: string, params?: object): Promise<ResultData<T>> {
-		return this.axiosInstance({
+	get<T>(url: string, params?: object){
+		return this.axiosInstance<ResultData<T>>({
 			url: url + qs.stringify(params),
 			method: RequestMethodEnum.GET,
 		});
 	}
-	post<T>(url: string, data: unknown): Promise<ResultData<T>> {
-		return this.axiosInstance({
+	post<T>(url: string, data: unknown) {
+		return this.axiosInstance<ResultData<T>>({
 			url: url,
 			method: RequestMethodEnum.POST,
 			data,
-		}) as Promise<ResultData<T>>;
+		});
 	}
 
 	interceptorsRequest(fn: InterceptorsRequest) {

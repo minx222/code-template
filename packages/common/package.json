@@ -10,7 +10,7 @@
 	"author": "",
 	"license": "ISC",
 	"dependencies": {
-		"i18next": "^23.15.2",
-		"react-i18next": "^15.0.2"
+		"i18next": "catalog:",
+		"react-i18next": "catalog:"
 	}
 }

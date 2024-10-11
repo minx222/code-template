@@ -35,7 +35,7 @@ export const templates: Record<string, Templates> = {
 		branch: "react-vite",
 	},
 	"vue-monorepo-vite": {
-		name: "react-monorepo-vite",
+		name: "vue-monorepo-vite",
 		description: "vue-应用",
 		url: "github:minx222/code-template",
 		branch: "monorepo-base",

@@ -1,0 +1,48 @@
+{
+  "tailwindCSS.experimental.configFile": "internal/tailwind-config/src/index.ts",
+
+
+  "css.validate": false,
+  "less.validate": false,
+  "scss.validate": false,
+
+  "stylelint.enable": true,
+  "stylelint.packageManager": "pnpm",
+  "stylelint.validate": ["css", "less", "postcss", "scss", "vue"],
+  "stylelint.snippet": ["css", "less", "postcss", "scss", "vue"],
+
+  "typescript.inlayHints.enumMemberValues.enabled": true,
+  "typescript.preferences.preferTypeOnlyAutoImports": true,
+  "typescript.preferences.includePackageJsonAutoImports": "on",
+
+  "eslint.validate": [
+    "javascript",
+    "typescript",
+    "javascriptreact",
+    "typescriptreact",
+    "vue",
+    "html",
+    "markdown",
+    "json",
+    "jsonc",
+    "json5"
+  ],
+
+  "tailwindCSS.experimental.classRegex": [
+    ["cva\\(([^)]*)\\)", "[\"'`]([^\"'`]*).*?[\"'`]"]
+  ],
+
+  "i18n-ally.localesPaths": [
+    "packages/locales/src/langs",
+    "apps/*/src/locales/langs"
+  ],
+  "i18n-ally.pathMatcher": "{locale}.json",
+  "i18n-ally.enabledParsers": ["json", "ts", "js", "yaml"],
+  "i18n-ally.sourceLanguage": "en",
+  "i18n-ally.displayLanguage": "zh-CN",
+  "i18n-ally.enabledFrameworks": ["vue", "react"],
+  "i18n-ally.keystyle": "nested",
+
+	"editor.guides.bracketPairs":"active",  // 控制是否启用。active: 仅为活动括号对启用水平参考线
+  "editor.guides.bracketPairsHorizontal": "active",   // 控制是否启用水平括号对指南。active: 仅为活动括号对启用水平参考线
+}

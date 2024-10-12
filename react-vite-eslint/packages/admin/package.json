@@ -1,0 +1,36 @@
+{
+	"name": "vite-template",
+	"private": true,
+	"version": "0.0.0",
+	"scripts": {
+		"dev": "vite",
+		"build": "tsc -b && vite build",
+		"lint": "eslint . --ext ts,tsx --report-unused-disable-directives --max-warnings 0",
+		"preview": "vite preview"
+	},
+	"dependencies": {
+		"@packges/common": "workspace:^",
+		"@reduxjs/toolkit": "catalog:react18",
+		"@ahooksjs/use-url-state": "^3.5.1",
+		"react-use": "catalog:react18",
+		"antd": "catalog:antd5",
+		"classnames": "^2.5.1",
+		"react": "catalog:react18",
+		"react-dom": "catalog:react18",
+		"react-redux": "catalog:react18",
+		"react-router-dom": "catalog:react18",
+		"redux-persist": "catalog:react18"
+	},
+	"devDependencies": {
+		"@types/react": "^18.3.3",
+		"@types/react-dom": "^18.3.0",
+		"@vitejs/plugin-react": "catalog:vite5",
+		"sass": "^1.77.8",
+		"sass-loader": "^16.0.0",
+		"typescript": "^5.2.2",
+		"unplugin-auto-import": "^0.18.2",
+		"vite": "catalog:vite5",
+		"vite-plugin-compression": "catalog:vite5",
+		"vite-plugin-mock": "catalog:vite5"
+	}
+}

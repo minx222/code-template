@@ -1,0 +1,25 @@
+packages:
+  - 'packages/**'
+
+catalog: 
+  i18next: ^23.15.2
+  react-i18next: ^15.0.2
+
+catalogs:
+  react18:
+    react: ^18.3.1
+    react-dom: ^18.3.1
+    react-router-dom: ^6
+    react-redux: ^9.1.0
+    redux-persist: ^6.0.0
+    '@reduxjs/toolkit': 2.2.7
+    react-use: ^17.5.1
+  antd5:
+    antd: ^5.10.1
+  vite5:
+    vite: ^5.4.8
+    '@vitejs/plugin-react': ^4.3.1
+    vite-plugin-compression: ^0.5.1
+    vite-plugin-mock: ^3.0.2
+
+

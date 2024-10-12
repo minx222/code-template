@@ -6,7 +6,7 @@ export enum ResultEnum {
 	SUCCESS = 200,
 	ERROR = 500,
 	OVERDUE = 599,
-	TIMEOUT = 10000,
+	TIMEOUT = 10000
 }
 
 /**
@@ -17,7 +17,7 @@ export enum RequestMethodEnum {
 	POST = 'POST',
 	PATCH = 'PATCH',
 	PUT = 'PUT',
-	DELETE = 'DELETE',
+	DELETE = 'DELETE'
 }
 
 /**
@@ -31,5 +31,5 @@ export enum ContentTypeEnum {
 	// form-data 一般配合qs
 	FORM_URLENCODED = 'application/x-www-form-urlencoded;charset=UTF-8',
 	// form-data 上传
-	FORM_DATA = 'multipart/form-data;charset=UTF-8',
+	FORM_DATA = 'multipart/form-data;charset=UTF-8'
 }

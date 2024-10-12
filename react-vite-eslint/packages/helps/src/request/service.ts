@@ -3,14 +3,16 @@ import type {
 	AxiosError,
 	AxiosInstance,
 	AxiosResponse,
-	InternalAxiosRequestConfig,
+	InternalAxiosRequestConfig
 } from 'axios';
 import qs from 'qs';
 
-import { RequestMethodEnum, ResultEnum } from '../enums/request';
-import type { CreateAxiosOptions, InterceptorsRequest } from '../types';
-
-import type { ResultData } from '../types';
+import { RequestMethodEnum, ResultEnum } from './enums';
+import type {
+	CreateAxiosOptions,
+	RequestMiddleware,
+	ResultData
+} from './types';
 
 export class AxiosService {
 	private axiosInstance: AxiosInstance;
@@ -32,37 +34,35 @@ export class AxiosService {
 			},
 			(error: AxiosError) => {
 				return Promise.reject(error);
-			},
+			}
 		);
 		this.axiosInstance.interceptors.response.use((response: AxiosResponse) => {
 			const { data, status } = response;
 			if (status !== ResultEnum.SUCCESS) {
-				console.error(data);
 				Promise.reject(data);
 			}
 			if (data.code !== ResultEnum.SUCCESS) {
-				console.error(data.message);
 				return Promise.reject(data);
 			}
 			return data;
 		});
 	}
 
-	get<T>(url: string, params?: object){
-		return this.axiosInstance<ResultData<T>>({
+	get<T>(url: string, params?: object): Promise<ResultData<T>> {
+		return this.axiosInstance({
 			url: url + qs.stringify(params),
-			method: RequestMethodEnum.GET,
+			method: RequestMethodEnum.GET
 		});
 	}
-	post<T>(url: string, data: unknown) {
-		return this.axiosInstance<ResultData<T>>({
+	post<T>(url: string, data: unknown): Promise<ResultData<T>> {
+		return this.axiosInstance({
 			url: url,
 			method: RequestMethodEnum.POST,
-			data,
-		});
+			data
+		}) as Promise<ResultData<T>>;
 	}
 
-	interceptorsRequest(fn: InterceptorsRequest) {
-		this.axiosInstance.interceptors.request.use(fn);
+	midelwareRequest(midelware: RequestMiddleware) {
+		this.axiosInstance.interceptors.request.use(midelware);
 	}
 }

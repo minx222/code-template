@@ -1,5 +1,5 @@
 {
-	"name": "@packges/utils",
+	"name": "@packges/helps",
 	"version": "1.0.0",
 	"description": "",
 	"main": "./src/index.ts",
@@ -8,5 +8,10 @@
 	},
 	"keywords": [],
 	"author": "",
-	"license": "ISC"
+	"license": "ISC",
+	"dependencies": {
+		"i18next": "catalog:",
+		"react-i18next": "catalog:",
+		"@packges/types": "workspace:^"
+	}
 }

@@ -1,4 +1,4 @@
-import { I18n } from '@packges/common';
+import { I18n } from '@packges/helps';
 
 import { enUS } from './en-US';
 import { zhCH } from './zh-CH';

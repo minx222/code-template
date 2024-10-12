@@ -3,7 +3,7 @@ import ReactDOM from 'react-dom/client';
 import App from './App.tsx';
 
 import '@/assets/scss/tailwind.scss';
-import '@/assets/scss/App.scss';
+import '@/assets/scss/app.scss';
 
 const rootEl = document.getElementById('root');
 if (rootEl) {

@@ -9,7 +9,7 @@
 		"preview": "vite preview"
 	},
 	"dependencies": {
-		"@packges/common": "workspace:^",
+		"@packges/helps": "workspace:^",
 		"@reduxjs/toolkit": "catalog:react18",
 		"@ahooksjs/use-url-state": "^3.5.1",
 		"react-use": "catalog:react18",

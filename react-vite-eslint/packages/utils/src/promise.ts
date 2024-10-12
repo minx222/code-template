@@ -18,14 +18,3 @@ export const resolvePromise = <T>(fn: Promise<T> | (() => Promise<T>)) => {
 			});
 	});
 };
-
-export const resolveFunction = <T>(fn: () => T): [T, null] | [T, Error] => {
-	try {
-		return [fn(), null];
-	} catch (err) {
-		// 处理结构类型不安全问题
-		// eslint-disable-next-line @typescript-eslint/ban-ts-comment
-		// @ts-ignore
-		return [null, err instanceof Error ? err : new Error(err)];
-	}
-};

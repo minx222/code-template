@@ -3,7 +3,7 @@ import { initReactI18next } from 'react-i18next';
 
 import type { GetFieldType } from 'lodash';
 
-import type { LocalType } from '../types';
+import type { LocalType } from '@packges/types';
 
 export class I18n<T, L> {
 	static install(resources: Resource) {

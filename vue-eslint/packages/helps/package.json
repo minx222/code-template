@@ -8,9 +8,5 @@
 	},
 	"keywords": [],
 	"author": "",
-	"license": "ISC",
-	"dependencies": {
-		"@vueuse/core": "catalog:vue3.4",
-		"vue": "catalog:vue3.4"
-	}
+	"license": "ISC"
 }

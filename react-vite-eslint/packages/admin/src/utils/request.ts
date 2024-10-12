@@ -1,4 +1,4 @@
-import { AxiosService, RequestMethodEnum } from '@packges/common';
+import { AxiosService, RequestMethodEnum } from '@packges/helps';
 
 import { store } from '@/stores';
 
@@ -9,7 +9,7 @@ export const request = new AxiosService({
 	baseURL: '/dev-api',
 });
 
-request.interceptorsRequest((config) => {
+request.midelwareRequest((config) => {
 	config.headers.set('saasTenantCode', store.getState().user.saasTenantCode);
 	config.headers.set(
 		'applicationId',

@@ -9,75 +9,53 @@ export interface Templates {
 	child?: Templates;
 }
 
-/**
- * @name 基础模版
- */
-export const templates: Record<string, Templates> = {
-	/**
-	 * @name monorepo模版
-	 */
-	"monorepo-base": {
-		name: "monorepo-base",
-		description: "monorepo模版",
+export const frameworks = {
+	vue: {
+		name: "Vue",
+		description: "Vue",
 		url: "github:minx222/code-template",
-		branch: "monorepo-base",
+		branch: "vue",
+		template: [
+			{
+				name: "eslint-monorepo",
+				description: "Vue",
+				url: "github:minx222/code-template",
+				dir: "eslint-monorepo",
+				appDir: "apps",
+				type: "monorepo",
+			},
+			{
+				name: "vitest-playwright-monorepo",
+				description: "Vue",
+				url: "github:minx222/code-template",
+				dir: "vitest-playwright-monorepo",
+				type: "monorepo-apps",
+			},
+		],
 	},
-	"react-vite-electron": {
-		name: "react-vite-electron",
-		description: "react-electron应用",
+	react: {
+		name: "React",
+		description: "React",
 		url: "github:minx222/code-template",
-		branch: "react-vite-electron",
-	},
-	"react-monorepo-vite": {
-		name: "react-monorepo-vite",
-		description: "react-应用",
-		url: "github:minx222/code-template",
-		branch: "react-vite",
-	},
-	"vue-monorepo-vite": {
-		name: "vue-monorepo-vite",
-		description: "vue-应用",
-		url: "github:minx222/code-template",
-		branch: "monorepo-base",
-		child: {
-			name: "vue-vite",
-			description: "vue3应用",
-			appName: "vue-vite",
-			url: "github:minx222/code-template",
-			branch: "vue-template",
-			path: "packages",
-		},
-	},
-};
-
-export const reduceTemplate = Object.keys(templates).map((item) => {
-	return {
-		value: item,
-		name: templates[item].description,
-	};
-});
-
-/**
- * @name 框架模版
- */
-export const frameworks: Record<string, Templates> = {
-	"react-vite": {
-		name: "react-vite",
-		description: "react-vite应用",
-		url: "github:minx222/code-template",
-		branch: "react-vite",
-	},
-	"vue-vite": {
-		name: "vue-vite",
-		description: "vue3应用",
-		url: "github:minx222/code-template",
-		branch: "vue-template",
+		branch: "react",
+		template: [
+			{
+				name: "eslint-monorepo",
+				description: "Vue",
+				url: "github:minx222/code-template",
+				dir: "vite-eslint",
+				appDir: "apps",
+				type: "monorepo",
+			},
+			{
+				name: "vitest-playwright-monorepo",
+				description: "Vue",
+				url: "github:minx222/code-template",
+				dir: "vitest-playwright-monorepo",
+				type: "monorepo-apps",
+			},
+		],
 	},
 };
 
-export const reduceFramework = Object.keys(frameworks).map((item) => {
-	return {
-		value: item,
-		name: frameworks[item].description,
-	};
-});
+export type Framework = "react" | "vue";

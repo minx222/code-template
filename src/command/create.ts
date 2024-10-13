@@ -29,14 +29,12 @@ export const create = async () => {
 		(template) => template.type === "monorepo",
 	);
 
-	console.log(templates);
 	if (templates.length === 0) {
 		logger.error("没有可用的模板");
 		process.exit(1);
 	}
 
 	if (templates.length === 1) {
-		console.log(templates);
 		return Object.assign(templates[0], config);
 	}
 

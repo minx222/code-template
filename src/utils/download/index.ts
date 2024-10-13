@@ -22,81 +22,45 @@ import { getDownloadUrl } from "./url";
 export const download = (
 	url: string,
 	dest: string,
-	opts:
-		| { clone: boolean }
-		| ((url: string, dest: string) => { clone: boolean }),
+	clone: boolean,
+	dir?: string,
 ) => {
-	const opt = typeof opts === "function" ? opts(url, dest) : opts;
-
 	const repo = normalize(url);
-	const downloadUrl = getDownloadUrl(repo, opt.clone);
+	const downloadUrl = getDownloadUrl(repo, clone);
 	if (!downloadUrl) {
 		logger.error("url非法");
 		return Promise.reject("url非法");
 	}
-	return new Promise<void>((resolve, reject) => {
-		if (opt.clone) {
-			gitClone(downloadUrl, dest, { checkout: repo.checkout }, (err) => {
-				if (err === undefined) {
-					rm(`${dest}/.git`);
-					resolve();
-					return;
-				}
-				reject(err.message);
-			});
-			return;
-		}
+	return new Promise((resolve, reject) => {
 		Download(downloadUrl, dest, {
 			extract: true,
 			strip: 1,
 			filter: (file) => {
-				return file.path.includes("packages");
+				console.log(dir, file.path, "dir");
+				return file.path.includes(dir ?? "");
 			},
-		}).then(() => {
-			resolve();
-		}, reject);
+		}).then(resolve, reject);
 	});
 };
 
 export const downloadDir = async (config: Project) => {
-	// const spinner = ora();
-	// spinner.start(chalk.blue("正在下载项目.....\n"));
-	let [, err] = await resolvePromise(
-		download(`${config.url}#${config.branch}`, config.appName, {
-			clone: false,
-		}),
-	);
-
-	if (err) {
-		// spinner.fail("下载终止，终止原因：");
-		rm(config.appName);
-		logger.exit(err);
-		return;
-	}
-
-	if (!config.child) {
-		// spinner.succeed(chalk.green("下载成功!!!"));
-		return;
-	}
-
-	// spinner.clear();
-	// spinner.start(chalk.blue("正在下载子项目.....\n"));
-
-	const { url, branch, path: childPath, appName: childName } = config.child;
-	const { appName } = config;
-	[, err] = await resolvePromise(
+	const spinner = ora();
+	spinner.start(chalk.blue("正在下载项目.....\n"));
+	const [, err] = await resolvePromise(
 		download(
-			`${url}#${branch}`,
-			path.join(config.appName, `./${childPath ?? ""}/`, childName),
-			{ clone: false },
+			`${config.url}#${config.branch}`,
+			config.appName,
+			false,
+			config.dir,
 		),
 	);
 
 	if (err) {
-		// spinner.fail("下载终止，终止原因：");
+		spinner.fail("下载终止，终止原因：");
 		rm(config.appName);
 		logger.exit(err);
 		return;
 	}
-	// spinner.succeed(chalk.green("下载成功!!!"));
+
+	spinner.succeed(chalk.green("下载成功!!!"));
 };

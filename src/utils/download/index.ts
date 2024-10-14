@@ -39,6 +39,10 @@ export const download = (
 				console.log(dir, file.path, "dir");
 				return file.path.includes(dir ?? "");
 			},
+			map(file) {
+				file.path = file.path.replace(dir ?? "", "");
+				return file;
+			},
 		}).then(resolve, reject);
 	});
 };
